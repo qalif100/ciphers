@@ -1,0 +1,19 @@
+def rotate(A,K):
+    if len(A) == 0:
+        return A
+    else:
+        return A[K:] + A[:K]
+
+#Caesar cipher. just use -ve shift to decipher
+def caesar(plaintext,shift):
+    plaintext = plaintext.lower()
+    crypted = ''
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    cipher = rotate(alphabet,shift)
+    
+    for letter in plaintext:
+        if letter not in set(alphabet):
+            crypted += letter
+        else:
+            crypted += cipher[alphabet.index(letter)]
+    return crypted
